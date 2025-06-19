@@ -1,26 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import authService from "./appwrite/AuthService"
+import { login, logout } from './store/authSlice'
+import { Header, Footer } from "./components"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    authService.getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+        } else {
+          dispatch(logout())
+        }
+      })
+      .finally(() => setLoading(false))
+
+  }, [])
+
 
   return (
     <>
-      <div>
-        <h1 style={{
-          color: "green"
-        }}>
-
+      <Header />
+      <div className='h-100 mt-12'>
+        <h1 className='text-4xl text-center font-bold text-red-500'>
           ReBlog
-
         </h1>
-        <p>Rethink Rewrite & ReBlog</p>
+        {loading ?
+          <p className='text-red-700 font-extrabold text-3xl'>loading</p>
+          : <p className='font-extrabold text-3xl text-center'>Rethink, ReWrite & ReBlog</p>}
 
       </div>
+
+      <Footer />
     </>
   )
+
 }
 
 export default App
