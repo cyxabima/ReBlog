@@ -21,7 +21,10 @@ function PostForm({ post }) {
     const userData = useSelector((state) => state.userData)
 
 
+
     const submit = async (data) => {
+        // console.log(hello);
+
         if (post) {
             const file = data?.image[0] ? await fileService.uploadFile(data.image[0]) : null;
 
@@ -35,13 +38,14 @@ function PostForm({ post }) {
             })
 
             if (dbPost) {
-                navigate(`/posts/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`)
             }
         } else {
             const file = await fileService.uploadFile(data.image[0])
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
+                console.log(userData)
 
                 const dbPost = await postsService.createPost({ ...data, userId: userData.$id })
 
@@ -79,7 +83,7 @@ function PostForm({ post }) {
 
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap text-white">
             <div className="w-2/3 px-2">
                 <Input
                     label="Title: "
@@ -121,7 +125,7 @@ function PostForm({ post }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+                <Button type="submit" bgColor={post ? "bg-green-500" : "bg-rose-500"} className="w-full">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>

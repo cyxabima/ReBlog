@@ -35,7 +35,7 @@ export default function Post() {
 
     return post ? (
         <div className="py-8">
-            <Container className={"bg-white p-12 rounded-2xl"}>
+            <Container className={"bg-rose-100 p-24 px-24 rounded-2xl"}>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
                         src={fileService.getFilePreview(post.featuredImage) + "&mode=admin"}
