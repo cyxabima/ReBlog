@@ -17,7 +17,7 @@ class FileService {
     async uploadFile(file) {
         try {
 
-            return this.bucket.updateFile(
+            return await this.bucket.createFile(
                 conf.bucketId,
                 ID.unique(),
                 file
@@ -34,7 +34,7 @@ class FileService {
 
         try {
 
-            this.bucket.deleteFile(conf.bucketId, fileId);
+            await this.bucket.deleteFile(conf.bucketId, fileId);
             return true;
 
         } catch (error) {

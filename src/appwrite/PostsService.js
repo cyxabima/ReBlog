@@ -107,6 +107,6 @@ class PostsService {
 }
 
 
-const postsService = PostsService();
+const postsService = new PostsService();
 
 export default postsService

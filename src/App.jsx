@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import authService from "./appwrite/AuthService"
 import { login, logout } from './store/authSlice'
 import { Header, Footer } from "./components"
+import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -22,22 +23,19 @@ function App() {
   }, [])
 
 
-  return (
-    <>
-      <Header />
-      <div className='h-100 mt-12'>
-        <h1 className='text-4xl text-center font-bold text-red-500'>
-          ReBlog
-        </h1>
-        {loading ?
-          <p className='text-red-700 font-extrabold text-3xl'>loading</p>
-          : <p className='font-extrabold text-3xl text-center'>Rethink, ReWrite & ReBlog</p>}
-
+  return !loading ? (
+    <div className='min-h-screen flex flex-wrap content-between  bg-black'>
+      <div className='w-full block'>
+        <Header />
+        <main className='min-h-[80vh]'>
+          <Outlet />
+        </main>
+        <Footer />
       </div>
-
-      <Footer />
-    </>
+    </div>
   )
+    :
+    <p className='text-red-700 font-extrabold text-3xl' > loading</p>
 
 }
 

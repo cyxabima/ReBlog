@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -10,6 +10,7 @@ export default function Protected({
 }) {
     const [loader, setLoader] = useState(true)
     const authStatus = useSelector((state) => state.status)
+    const Navigate = useNavigate()
     useEffect(() => {
 
         if (authentication && authStatus != authentication) {
