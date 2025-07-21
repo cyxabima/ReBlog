@@ -1,7 +1,7 @@
 
-# 📰 Carento Blog — A Full-Stack Production-Ready React Blog App (with Appwrite)
+# 📰 ReBlog Blog — A Full-Stack Production-Ready React Blog App (with Appwrite)
 
-**Carento Blog** is a fully functional, production-ready **full-stack blog application** built using **ReactJS** on the frontend and **Appwrite** as the backend. This was developed as a **capstone project** during the **"Chai aur React"** course by *Hitesh Choudhary (Chai aur Code)* ☕.
+**ReBlog Blog** is a fully functional, production-ready **full-stack blog application** built using **ReactJS** on the frontend and **Appwrite** as the backend. This was developed as a **capstone project** during the **"Chai aur React"** course by *Hitesh Choudhary (Chai aur Code)* ☕.
 
 The project features scalable architecture using **Redux Toolkit**, **service classes**, and a clear separation of concerns to support long-term maintainability and backend interchangeability.
 
@@ -161,7 +161,7 @@ Truly thankful for a learning experience that went beyond tutorials and into rea
 
 ---
 
-📌 **Project Name**: `Carento Blog`
+📌 **Project Name**: `ReBlog Blog`
 🛠️ **Stack**: React + Redux Toolkit + Appwrite
 
 
